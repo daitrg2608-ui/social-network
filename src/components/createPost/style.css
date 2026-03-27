@@ -1,0 +1,294 @@
+/* ─────────────────────────────────────────────
+   CreatePost — Redesigned
+   Aesthetic: warm editorial, soft depth, refined
+───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
+/* ── Card shell ────────────────────────────── */
+.createPost {
+  position: relative;
+  background: var(--bg-primary);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  font-family: 'Sora', var(--font-family), sans-serif;
+  cursor: default;
+}
+
+.createPost:hover {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    0 8px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Page-variant sizing */
+.createPost.home-variant    { width: 685px; margin-top: 0; }
+.createPost.profile-variant { width: 100%;  margin-top: 1.1rem; }
+
+/* ── Rainbow accent bar ────────────────────── */
+.createPost_accent_bar {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #f3425f 0%,
+    #f7b928 33%,
+    #4bbf67 66%,
+    #1877f2 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0%   50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Header row ────────────────────────────── */
+.createPost_header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 10px 16px;
+}
+
+/* Avatar */
+.avatar_wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar_wrapper img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid transparent;
+  background:
+    linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+    linear-gradient(135deg, #f3425f, #f7b928, #4bbf67) border-box;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.avatar_wrapper img:hover {
+  transform: scale(1.06);
+}
+
+/* Online status dot */
+.avatar_status {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  background: #4bbf67;
+  border: 2px solid var(--bg-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(75, 191, 103, 0.25);
+  animation: pulse-status 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(75, 191, 103, 0.25); }
+  50%       { box-shadow: 0 0 0 5px rgba(75, 191, 103, 0.08); }
+}
+
+/* ── Input pill ─────────────────────────────── */
+.open_post {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-forth);
+  border: 1.5px solid transparent;
+  border-radius: 50px;
+  padding: 0 8px 0 16px;
+  height: 44px;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+  outline: none;
+  gap: 8px;
+}
+
+.open_post:hover,
+.open_post:focus-visible {
+  background: var(--bg-third);
+  border-color: rgba(24, 119, 242, 0.35);
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.10);
+}
+
+.open_post_text {
+  font-size: 15px;
+  color: var(--color-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.open_post_text strong {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* "Post" pill badge */
+.open_post_cta {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #1877f2, #0d5dd4);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 5px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(24, 119, 242, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.open_post:hover .open_post_cta {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.45);
+}
+
+/* ── Decorative splitter ─────────────────────── */
+.create_splitter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  margin: 2px 0 4px;
+}
+
+.splitter_line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--bg-third) 20%,
+    var(--bg-third) 80%,
+    transparent
+  );
+}
+
+.splitter_dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--bg-third);
+}
+
+/* ── Action buttons row ──────────────────────── */
+.createPost_body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px 12px 12px;
+}
+
+.createPost_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 9px 6px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.15s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple layer */
+.createPost_icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: 12px;
+  transition: opacity 0.2s ease;
+}
+
+.createPost_icon:hover {
+  transform: translateY(-2px);
+}
+
+.createPost_icon[data-type="live"]:hover   { background: rgba(243, 66,  95,  0.08); }
+.createPost_icon[data-type="photo"]:hover  { background: rgba(75,  191, 103, 0.08); }
+.createPost_icon[data-type="feeling"]:hover,
+.createPost_icon[data-type="life"]:hover   { background: rgba(247, 185, 40,  0.08); }
+
+.createPost_icon:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Circular icon container */
+.icon_bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.createPost_icon:hover .icon_bg {
+  transform: scale(1.12) rotate(-4deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.live_bg    { background: linear-gradient(135deg, #f3425f, #e0244a); box-shadow: 0 3px 8px rgba(243,66,95,0.35); }
+.photo_bg   { background: linear-gradient(135deg, #4bbf67, #2da34e); box-shadow: 0 3px 8px rgba(75,191,103,0.35); }
+.feeling_bg { background: linear-gradient(135deg, #f7b928, #e5a010); box-shadow: 0 3px 8px rgba(247,185,40,0.35); }
+.life_bg    { background: linear-gradient(135deg, #1877f2, #0d5dd4); box-shadow: 0 3px 8px rgba(24,119,242,0.35); }
+
+.icon_label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.18s ease;
+}
+
+.createPost_icon[data-type="live"]:hover    .icon_label { color: #f3425f; }
+.createPost_icon[data-type="photo"]:hover   .icon_label { color: #2da34e; }
+.createPost_icon[data-type="feeling"]:hover .icon_label { color: #e5a010; }
+.createPost_icon[data-type="life"]:hover    .icon_label { color: #1877f2; }
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 1000px) {
+  .createPost.home-variant {
+    width: 100%;
+  }
+
+  .open_post_cta {
+    display: none;
+  }
+
+  .icon_label {
+    font-size: 12px;
+  }
+}
+
+
+

@@ -1,0 +1,436 @@
+/* ─── Right Home Sidebar ──────────────────────────────────────────── */
+.right_home {
+  position: fixed;
+  left: 80.7vw;
+  top: 4rem;
+  width: 313px;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 0 24px 0;
+  scroll-behavior: smooth;
+}
+
+/* Hidden scrollbar but still scrollable */
+.right_home::-webkit-scrollbar {
+  width: 0px;
+}
+.right_home:hover::-webkit-scrollbar {
+  width: 4px;
+}
+.right_home::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 99px;
+}
+.right_home::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ─── Section Wrapper ─────────────────────────────────────────────── */
+.sidebar_section {
+  margin: 0 8px 4px 8px;
+  padding: 6px 4px;
+}
+
+/* ─── Section Heading ─────────────────────────────────────────────── */
+.heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  padding: 8px 12px 4px 12px;
+  letter-spacing: -0.1px;
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────── */
+.splitter1 {
+  height: 1px;
+  background: var(--divider);
+  margin: 8px 12px;
+  border-radius: 1px;
+}
+
+/* ─── Generic Contact Row ─────────────────────────────────────────── */
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: background 0.18s ease, transform 0.15s ease;
+  position: relative;
+  margin: 1px 4px;
+}
+
+.contact:hover {
+  background: var(--bg-third);
+  transform: translateX(2px);
+}
+
+.contact:active {
+  transform: translateX(2px) scale(0.99);
+}
+
+/* ─── Avatar ──────────────────────────────────────────────────────── */
+.contact_img {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.contact_img img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ─── Online Dot ──────────────────────────────────────────────────── */
+.state_active_user {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 11px;
+  width: 11px;
+  background: #31a24c;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 1px rgba(49, 162, 76, 0.25);
+}
+
+/* ─── Friend Request Card ─────────────────────────────────────────── */
+.contact.request_card {
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--bg-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin: 4px 4px;
+  transition: box-shadow 0.2s ease, transform 0.18s ease;
+}
+
+.contact.request_card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  background: var(--bg-primary);
+  transform: translateY(-1px);
+}
+
+.requests_img {
+  flex-shrink: 0;
+}
+
+.requests_img img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.requests_img:hover img {
+  transform: scale(1.04);
+}
+
+.body_requests {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.name_requests {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.35;
+}
+
+.name_requests a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.name_requests a:hover {
+  text-decoration: underline;
+}
+
+.name_requests p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: baseline;
+}
+
+.name_requests p span {
+  font-weight: 400;
+  color: var(--color-secondary);
+  font-size: 13px;
+}
+
+.button_requests {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+/* ─── Accept Button ───────────────────────────────────────────────── */
+.blue_btn_requests {
+  border: none;
+  outline: none;
+  background: var(--blue-color);
+  padding: 7px 0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  transition: filter 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 3px rgba(24, 119, 242, 0.35);
+}
+
+.blue_btn_requests:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(24, 119, 242, 0.45);
+}
+
+.blue_btn_requests:active {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+
+/* ─── Delete / Gray Button ────────────────────────────────────────── */
+.gray_btn_requests {
+  border: none;
+  outline: none;
+  background: var(--bg-third);
+  padding: 7px 0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  transition: filter 0.18s ease, transform 0.15s ease;
+}
+
+.gray_btn_requests:hover {
+  filter: brightness(0.94);
+  transform: translateY(-1px);
+}
+
+.gray_btn_requests:active {
+  transform: translateY(0);
+}
+
+/* ─── Birthday Section ────────────────────────────────────────────── */
+.birthday_card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+  margin: 4px 4px;
+  cursor: default;
+  border: 1px solid #ffe0b2;
+  transition: box-shadow 0.2s ease;
+}
+
+.birthday_card:hover {
+  box-shadow: 0 3px 10px rgba(255, 152, 0, 0.18);
+  transform: none;
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+}
+
+.birth_emoji {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.birthday_card p {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5d4037;
+  line-height: 1.4;
+}
+
+.birthday_card p b {
+  font-weight: 700;
+  color: #e65100;
+}
+
+/* ─── Group Invite Card ───────────────────────────────────────────── */
+.circle_icon_notification {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+}
+
+.req_card_pagegroup {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-third);
+}
+
+.content_head_pagegroup {
+  width: 100%;
+  height: 100%;
+}
+
+.content_head_pagegroup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.contact.request_card:hover .content_head_pagegroup img {
+  transform: scale(1.05);
+}
+
+.right_bottom_notification_group {
+  position: absolute;
+  bottom: -6px;
+  right: -8px;
+  border-radius: 50%;
+  padding: 0;
+  z-index: 1;
+}
+
+.right_bottom_notification_group img {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  display: block;
+  object-fit: cover;
+}
+
+/* ─── Contacts Header ─────────────────────────────────────────────── */
+.contacts_wrap {
+  padding: 0 4px;
+}
+
+.contacts_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 6px 10px;
+}
+
+.contacts_header_left {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.contacts_header_right {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.contact_circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease;
+  flex-shrink: 0;
+}
+
+.contact_circle:hover {
+  background: var(--bg-third);
+}
+
+.contacts_list {
+  padding: 2px 0;
+}
+
+/* ─── Room Message Row ────────────────────────────────────────────── */
+.room_name_wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.room_name_wrap span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.room_group_label {
+  font-size: 12px;
+  color: var(--color-secondary);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.room_avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ─── Responsive: hide on small screens ──────────────────────────── */
+@media (max-width: 1200px) {
+  .right_home {
+    display: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .right_home {
+    width: 260px;
+    left: auto;
+    right: 0;
+  }
+}
